@@ -11,12 +11,15 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material';
 import {FlexModule} from '@angular/flex-layout';
 import { HeaderComponent } from './navigation/header/header.component';
+import {HttpClientModule} from '@angular/common/http';
+import { LaunchpadComponent } from './launchpad/launchpad.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HeaderComponent
+    HeaderComponent,
+    LaunchpadComponent
   ],
   imports: [
     BrowserModule,
@@ -27,6 +30,7 @@ import { HeaderComponent } from './navigation/header/header.component';
     ReactiveFormsModule,
     MatButtonModule,
     FlexModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
