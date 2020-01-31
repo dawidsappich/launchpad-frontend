@@ -1,9 +1,7 @@
 {
-    "login": [
-        {
-            "status": "OK",
-            "message": "Success",
-            "payload": null
-        }
-    ]
+  "login": {
+    "status": "OK",
+    "message": "Success",
+    "payload": null
+  }
 }

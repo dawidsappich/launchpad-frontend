@@ -10,6 +10,7 @@ export class LaunchpadComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    // TODO load launchpad
   }
 
 }

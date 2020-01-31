@@ -1,6 +1,8 @@
 import {Injectable, OnDestroy} from '@angular/core';
 import {Subject} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
+import {NotificationService} from '../notification/notification.service';
+import {ApplicationResponse} from '../model/application-response.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,18 +12,22 @@ export class AuthService implements OnDestroy {
   // tslint:disable-next-line:variable-name
   private _isAuthenticated$: Subject<boolean> = new Subject();
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private notificationService: NotificationService) { }
 
   authenticate(username: string, password: string) {
-    this.httpClient.get('/api/v1/login')
+    this.httpClient.get<ApplicationResponse>('/api/v1/login')
       .subscribe(this.handleResponse(), this.handleError());
   }
 
 
   private handleResponse() {
     return response => {
-      console.log(response);
-      this.isAuthenticated$.next(true);
+      if (response.status === 'OK') {
+        this.isAuthenticated$.next(true);
+      } else {
+        this.isAuthenticated$.next(false);
+      }
+      this.notificationService.createSnackBar(response.message, 'Dismiss', 2000);
     };
   }
 
@@ -29,6 +35,7 @@ export class AuthService implements OnDestroy {
     return error => {
       console.log(error);
       this.isAuthenticated$.next(false);
+      this.notificationService.createSnackBar('Authentication failed!', 'Dismiss', 2000);
     };
   }
 
