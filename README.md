@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Mockserver (JSON Server)
 
-run `npm run api`. Will start an JSON Server used in development for mocking the Backend API
+run `npm run api`. Will start an JSON Server used in development for mocking the Backend API. Navigate to `http://localhost:3000`
 
 ## Development server
 
