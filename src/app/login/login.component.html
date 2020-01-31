@@ -1,23 +1,23 @@
-<section class="login-form">
-  <form [formGroup]="loginForm" >
+<section fxLayout="row" fxLayoutAlign="center">
+  <form [formGroup]="loginForm" class="login-form">
 
     <mat-card>
-      <mat-card-title>Enter your credentials</mat-card-title>
-      <mat-card-content>
+      <mat-card-title class="title">Enter your credentials</mat-card-title>
+      <mat-card-content fxLayout="column">
         <mat-form-field>
           <input matInput formControlName="username" placeholder="username">
           <mat-error *ngIf="loginForm.get('username').hasError('required')">Field must not be empty</mat-error>
           <mat-error *ngIf="!loginForm.get('username').hasError('required')">Email is invalid</mat-error>
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field hintLabel="Should at least be {{ minLength }} characters long">
           <input matInput formControlName="password" placeholder="password" type="password">
           <mat-hint align="end"> {{ loginForm.get('password').value.length }} / {{ minLength }}</mat-hint>
           <mat-error *ngIf="loginForm.get('password').value.length < minLength">Password must be at least {{ minLength }} characters</mat-error>
         </mat-form-field>
       </mat-card-content>
       <mat-card-actions>
-        <button [disabled]="!loginForm.valid" mat-raised-button color="primary" (click)="onLogin()">login</button>
+        <button [disabled]="!loginForm.valid" mat-raised-button color="primary" (click)="onLogin()">LOGIN</button>
       </mat-card-actions>
     </mat-card>
 

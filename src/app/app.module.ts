@@ -9,11 +9,14 @@ import {LoginComponent} from './login/login.component';
 import {MaterialStyleModule} from './material-style/material-style.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material';
+import {FlexModule} from '@angular/flex-layout';
+import { HeaderComponent } from './navigation/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -23,6 +26,7 @@ import {MatButtonModule} from '@angular/material';
     MaterialStyleModule,
     ReactiveFormsModule,
     MatButtonModule,
+    FlexModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
