@@ -1,7 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
-import {AppRoutingModule} from './app-routing.module';
+import {AppRoutingModule} from './app-routing/app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
@@ -10,9 +10,10 @@ import {MaterialStyleModule} from './material-style/material-style.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material';
 import {FlexModule} from '@angular/flex-layout';
-import { HeaderComponent } from './navigation/header/header.component';
-import {HttpClientModule} from '@angular/common/http';
-import { LaunchpadComponent } from './launchpad/launchpad.component';
+import {HeaderComponent} from './navigation/header/header.component';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import {LaunchpadComponent} from './launchpad/launchpad.component';
+import {BasicAuthInterceptor} from './shared/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,9 @@ import { LaunchpadComponent } from './launchpad/launchpad.component';
     FlexModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
