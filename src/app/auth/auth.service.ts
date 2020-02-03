@@ -1,5 +1,5 @@
 import {Injectable, OnDestroy} from '@angular/core';
-import {Subject} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {NotificationService} from '../notification/notification.service';
 import {ApplicationResponse} from '../model/application-response.model';
@@ -14,6 +14,8 @@ export class AuthService implements OnDestroy {
 
   // tslint:disable-next-line:variable-name
   private _isAuthenticated$: Subject<boolean> = new Subject();
+  // tslint:disable-next-line:variable-name
+  private _isLoggedIn$: Subject<boolean> = new Subject();
 
   constructor(private httpClient: HttpClient, private notificationService: NotificationService) { }
 
@@ -34,8 +36,10 @@ export class AuthService implements OnDestroy {
   private handleResponse() {
     return response => {
       if (response.status === 'OK') {
+        this.isLoggedIn$.next(true);
         this.isAuthenticated$.next(true);
       } else {
+        this.isLoggedIn$.next(false);
         this.isAuthenticated$.next(false);
       }
       this.notificationService.createSnackBar(response.message, 'Dismiss', 2000);
@@ -47,6 +51,7 @@ export class AuthService implements OnDestroy {
       // its either an errorEvent (client side error) or an error response (server error)
       const message = error.error.message;
       console.error(`some error occurred: `, message);
+      this.isLoggedIn$.next(false);
       this.isAuthenticated$.next(false);
       this.notificationService.createSnackBar(message, 'Dismiss', 2000);
     };
@@ -65,7 +70,17 @@ export class AuthService implements OnDestroy {
     return this._TOKEN;
   }
 
+  get isLoggedIn$(): Subject<boolean> {
+    return this._isLoggedIn$;
+  }
+
   ngOnDestroy(): void {
     this.isAuthenticated$ ? this.isAuthenticated$.unsubscribe() : this.isAuthenticated$ = null;
+  }
+
+  logout(): Observable<boolean> {
+    this.isLoggedIn$.next(false);
+    this.isAuthenticated$.next(false);
+    return new Observable(observer => observer.next(true));
   }
 }
