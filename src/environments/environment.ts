@@ -2,8 +2,12 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+import {commonUrl} from '../app/shared/url';
+
 export const environment = {
-  production: false
+  production: false,
+  basePath: 'http://localhost:8080/api/v1',
+  userLoginUrl: commonUrl.userLoginUrl
 };
 
 /*
