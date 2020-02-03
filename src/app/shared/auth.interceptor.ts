@@ -14,7 +14,7 @@ export class BasicAuthInterceptor implements HttpInterceptor {
   // add authorization header to the request
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    const headers = req.headers.set('Authorisation', this.authService.TOKEN);
+    const headers = req.headers.set('Authorization', this.authService.TOKEN);
     const httpRequest = req.clone({headers});
     // if url is user login handle the original req without adding the authorization header
     return req.url.endsWith(environment.userLoginUrl) ? next.handle(req) : next.handle(httpRequest);

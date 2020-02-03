@@ -7,7 +7,8 @@ import {commonUrl} from '../app/shared/url';
 export const environment = {
   production: false,
   basePath: 'http://localhost:8080/api/v1',
-  userLoginUrl: commonUrl.userLoginUrl
+  userLoginUrl: commonUrl.userLoginUrl,
+  launchpadAllTilesUrl: commonUrl.allTilesUrl
 };
 
 /*

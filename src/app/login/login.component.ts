@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     // use service to authenticate
     this.authService.authenticate(username, password);
     // subscribe to service to be notified about changes in authentication
-    this.isAuthenticated$ = this.authService.isAuthenticated$.asObservable().subscribe(isAuthenticated => {
+    this.isAuthenticated$ = this.authService.isAuthenticated$.subscribe(isAuthenticated => {
       if (isAuthenticated) {
         // when authenticated navigate to launchpad
         this.router.navigate(['/launchpad']);

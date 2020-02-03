@@ -16,6 +16,8 @@ export class AuthService implements OnDestroy {
   private _isAuthenticated$: Subject<boolean> = new Subject();
   // tslint:disable-next-line:variable-name
   private _isLoggedIn$: Subject<boolean> = new Subject();
+  // tslint:disable-next-line:variable-name
+  private _isAuthenticated: boolean;
 
   constructor(private httpClient: HttpClient, private notificationService: NotificationService) { }
 
@@ -36,6 +38,7 @@ export class AuthService implements OnDestroy {
   private handleResponse() {
     return response => {
       if (response.status === 'OK') {
+        this._isAuthenticated = true;
         this.isLoggedIn$.next(true);
         this.isAuthenticated$.next(true);
       } else {
@@ -51,6 +54,7 @@ export class AuthService implements OnDestroy {
       // its either an errorEvent (client side error) or an error response (server error)
       const message = error.error.message;
       console.error(`some error occurred: `, message);
+      this._isAuthenticated = true;
       this.isLoggedIn$.next(false);
       this.isAuthenticated$.next(false);
       this.notificationService.createSnackBar(message, 'Dismiss', 2000);
@@ -72,6 +76,10 @@ export class AuthService implements OnDestroy {
 
   get isLoggedIn$(): Subject<boolean> {
     return this._isLoggedIn$;
+  }
+
+  get isAuthenticated(): boolean {
+    return this._isAuthenticated;
   }
 
   ngOnDestroy(): void {

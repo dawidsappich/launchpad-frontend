@@ -11,9 +11,10 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material';
 import {FlexModule} from '@angular/flex-layout';
 import {HeaderComponent} from './navigation/header/header.component';
-import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {LaunchpadComponent} from './launchpad/launchpad.component';
 import {BasicAuthInterceptor} from './shared/auth.interceptor';
+import {AuthGuard} from './auth/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {BasicAuthInterceptor} from './shared/auth.interceptor';
     HttpClientModule
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true},
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
