@@ -30,9 +30,7 @@ export class TemplateDetailComponent implements OnInit {
 
   onSubmit() {
     this.updateTemplateValues();
-
     this.launchpadService.addTile(this.data);
-
     this.dialogRef.close();
   }
 
@@ -40,6 +38,7 @@ export class TemplateDetailComponent implements OnInit {
     const name = this.templateDetailForm.get('name').value;
     const desc = this.templateDetailForm.get('name').value;
 
+    // TODO check if template should be updated or application or tile
     this.data.templateName = name;
     this.data.templateDescription = desc;
   }

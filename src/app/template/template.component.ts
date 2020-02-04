@@ -13,7 +13,8 @@ export class TemplateComponent implements OnInit {
   @Input()
   private template: Template;
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog) {
+  }
 
   ngOnInit() {
 
@@ -22,6 +23,6 @@ export class TemplateComponent implements OnInit {
   onAdd() {
     const data: Template = this.template;
     // open dialog to alter metadata
-    this.dialog.open(TemplateDetailComponent, {data});
+    this.dialog.open(TemplateDetailComponent, {data, width: '400px'});
   }
 }

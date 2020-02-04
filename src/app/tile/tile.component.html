@@ -1,8 +1,8 @@
 <mat-card class="tile-card">
   <mat-card-header>
-    <fa-icon *ngIf="isAdminUser" class="lp-tile-icon__edit" [icon]="faEditIcon" size="lg"></fa-icon>
-    <mat-card-title>{{tile.title}}</mat-card-title>
-    <mat-card-subtitle>{{tile.description}}</mat-card-subtitle>
+    <fa-icon *ngIf="isAdminUser" (click)="onEdit()" class="lp-tile-icon__edit" [icon]="faEditIcon" size="lg"></fa-icon>
+    <mat-card-title>{{tile.application.appName}}</mat-card-title>
+    <mat-card-subtitle>{{tile.application.appDescription}}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-actions fxLayout="column">
     <button class="lp-btn-app__start" mat-flat-button color="primary" [disabled]="isStarted" (click)="onStart()">START

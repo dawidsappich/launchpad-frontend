@@ -1,0 +1,12 @@
+<form [formGroup]="tileDetailForm" fxLayout="column">
+  <mat-form-field>
+    <input matInput formControlName="title">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput formControlName="desc">
+  </mat-form-field>
+  <div class="lp-btn-actions">
+    <button mat-flat-button color="primary" (click)="onSubmit()">SUBMIT</button>
+    <button mat-stroked-button (click)="onCancel()">CANCEL</button>
+  </div>
+</form>

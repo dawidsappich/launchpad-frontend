@@ -18,6 +18,7 @@ import {AuthGuard} from './auth/auth-guard.service';
 import {TileComponent} from './tile/tile.component';
 import { TemplateComponent } from './template/template.component';
 import { TemplateDetailComponent } from './template/template-detail/template-detail.component';
+import { TileDetailComponent } from './tile/tile-detail/tile-detail.component';
 
 @NgModule({
   declarations: [
@@ -27,10 +28,12 @@ import { TemplateDetailComponent } from './template/template-detail/template-det
     LaunchpadComponent,
     TileComponent,
     TemplateComponent,
-    TemplateDetailComponent
+    TemplateDetailComponent,
+    TileDetailComponent
   ],
   entryComponents: [
-    TemplateDetailComponent
+    TemplateDetailComponent,
+    TileDetailComponent
   ],
   imports: [
     BrowserModule,

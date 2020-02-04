@@ -6,6 +6,7 @@ import {Subject} from 'rxjs';
 import {ApplicationResponse} from '../../model/application-response.model';
 import {NotificationService} from '../../notification/notification.service';
 import {Template} from '../../model/template.model';
+import {Tile} from '../../model/tile.model';
 
 
 @Injectable({
@@ -56,5 +57,11 @@ export class LaunchpadService {
       .subscribe(response => {
         this.loadLaunchPad();
       });
+  }
+
+  updateTile(tile: Tile) {
+    const application = tile.application;
+    this.httpClient.patch<ApplicationResponse>(`${environment.basePath}${environment.updateAppUrl}`, application)
+      .subscribe(response => this.loadLaunchPad());
   }
 }

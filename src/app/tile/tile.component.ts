@@ -5,6 +5,8 @@ import {NotificationService} from '../notification/notification.service';
 import {Subscription} from 'rxjs';
 import {faEdit} from '@fortawesome/free-solid-svg-icons';
 import {AuthService} from '../auth/auth.service';
+import {MatDialog} from '@angular/material';
+import {TileDetailComponent} from './tile-detail/tile-detail.component';
 
 
 @Component({
@@ -19,14 +21,14 @@ export class TileComponent implements OnInit, OnDestroy {
 
   @Input()
   private tile: Tile;
-  private subscription: Subscription;
   private isStarted: boolean;
   isAdminUser: boolean;
   private isAdminSubscription$: Subscription;
 
   constructor(private launchpadService: LaunchpadService,
               private notificationService: NotificationService,
-              private authService: AuthService) {
+              private authService: AuthService,
+              private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -50,5 +52,11 @@ export class TileComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.isAdminSubscription$ ? this.isAdminSubscription$.unsubscribe() : this.isAdminSubscription$ = null;
+  }
+
+  onEdit() {
+    const data = this.tile;
+    this.dialog.open(TileDetailComponent, {data, width: '400px'});
+
   }
 }

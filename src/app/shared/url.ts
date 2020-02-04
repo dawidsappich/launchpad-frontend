@@ -4,5 +4,6 @@ export const commonUrl = {
   startAppUrl: '/launchpad/application',
   allTemplatesUrl: '/launchpad/template/all',
   userRoleUrl: '/launchpad/userrole',
-  addTileUrl: '/launchpad/tile/add'
+  addTileUrl: '/launchpad/tile/add',
+  updateUrl: '/launchpad/application'
 };
