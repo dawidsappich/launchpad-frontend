@@ -6,5 +6,7 @@ export const environment = {
   basePath: '/api/v1',
   userLoginUrl: commonUrl.userLoginUrl,
   launchpadAllTilesUrl: commonUrl.allTilesUrl,
-  launchpadStartApplicationUrl: commonUrl.startAppUrl
+  launchpadStartApplicationUrl: commonUrl.startAppUrl,
+  allTemplatesUrl: commonUrl.allTemplatesUrl,
+  userRoleUrl: commonUrl.userRoleUrl
 };

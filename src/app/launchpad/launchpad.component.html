@@ -1,9 +1,10 @@
 <main class="lp-main-view" fxLayout>
-  <section *ngIf="launchpad" fxLayout="row wrap" fxLayoutGap="50px" fxFlex="80">
+  <section *ngIf="launchpad" fxLayout="row wrap" fxLayoutGap="50px" fxFlex="80" fxFlexAlign="start">
     <h2 fxFlex="100">{{launchpad.title}}</h2>
     <app-tile *ngFor="let tile of launchpad.tiles" [tile]="tile"></app-tile>
   </section>
-  <section fxFlex="20" fxLayout="column">
+  <section *ngIf="isAdmin" fxFlex="20" fxLayoutGap="50px" fxLayout="column">
     <h2>Templates</h2>
+    <app-template [template]="template" *ngFor="let template of templates"></app-template>
   </section>
 </main>

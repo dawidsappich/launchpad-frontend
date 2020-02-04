@@ -16,6 +16,7 @@ import {LaunchpadComponent} from './launchpad/launchpad.component';
 import {BasicAuthInterceptor} from './shared/auth.interceptor';
 import {AuthGuard} from './auth/auth-guard.service';
 import {TileComponent} from './tile/tile.component';
+import { TemplateComponent } from './template/template.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {TileComponent} from './tile/tile.component';
     LoginComponent,
     HeaderComponent,
     LaunchpadComponent,
-    TileComponent
+    TileComponent,
+    TemplateComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,7 @@ import {TileComponent} from './tile/tile.component';
     ReactiveFormsModule,
     MatButtonModule,
     FlexModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true},

@@ -1,4 +1,4 @@
-import {Injectable, OnDestroy} from '@angular/core';
+import {EventEmitter, Injectable, OnDestroy} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {NotificationService} from '../notification/notification.service';
@@ -9,16 +9,17 @@ import {environment} from '../../environments/environment';
   providedIn: 'root'
 })
 export class AuthService implements OnDestroy {
-
   private _TOKEN: string;
 
   // tslint:disable-next-line:variable-name
   private _isAuthenticated$: Subject<boolean> = new Subject();
+
   // tslint:disable-next-line:variable-name
   private _isLoggedIn$: Subject<boolean> = new Subject();
   // tslint:disable-next-line:variable-name
   private _isAuthenticated: boolean;
-
+  // tslint:disable-next-line:variable-name
+  private _isAdmin$: Subject<boolean> = new Subject<boolean>();
   constructor(private httpClient: HttpClient, private notificationService: NotificationService) { }
 
   authenticate(username: string, password: string) {
@@ -34,7 +35,6 @@ export class AuthService implements OnDestroy {
     this._TOKEN = `Basic ${hashedUsernamePassword}`;
   }
 
-
   private handleResponse() {
     return response => {
       if (response.status === 'OK') {
@@ -48,6 +48,7 @@ export class AuthService implements OnDestroy {
       this.notificationService.createSnackBar(response.message, 'Dismiss', 2000);
     };
   }
+
 
   private handleError() {
     return error => {
@@ -65,10 +66,10 @@ export class AuthService implements OnDestroy {
     return this._isAuthenticated$;
   }
 
-
   set isAuthenticated$(value: Subject<boolean>) {
     this._isAuthenticated$ = value;
   }
+
 
   get TOKEN(): string {
     return this._TOKEN;
@@ -82,6 +83,10 @@ export class AuthService implements OnDestroy {
     return this._isAuthenticated;
   }
 
+  get isAdmin$(): Subject<boolean> {
+    return this._isAdmin$;
+  }
+
   ngOnDestroy(): void {
     this.isAuthenticated$ ? this.isAuthenticated$.unsubscribe() : this.isAuthenticated$ = null;
   }
@@ -90,5 +95,10 @@ export class AuthService implements OnDestroy {
     this.isLoggedIn$.next(false);
     this.isAuthenticated$.next(false);
     return new Observable(observer => observer.next(true));
+  }
+
+  isAdminUser() {
+    return this.httpClient.get<boolean>(`${environment.basePath}${environment.userRoleUrl}`)
+      .subscribe(isAdmin => this._isAdmin$.next(isAdmin));
   }
 }

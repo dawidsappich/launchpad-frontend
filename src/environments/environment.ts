@@ -10,7 +10,8 @@ export const environment = {
   userLoginUrl: commonUrl.userLoginUrl,
   launchpadAllTilesUrl: commonUrl.allTilesUrl,
   launchpadStartApplicationUrl: commonUrl.startAppUrl,
-  allTemplatesUrl: commonUrl.allTemplatesUrl
+  allTemplatesUrl: commonUrl.allTemplatesUrl,
+  userRoleUrl: commonUrl.userRoleUrl
 };
 
 /*

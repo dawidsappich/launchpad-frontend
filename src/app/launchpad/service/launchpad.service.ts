@@ -45,9 +45,9 @@ export class LaunchpadService {
   }
 
   loadTemplates() {
-    this.httpClient.get<ApplicationResponse>(`${environment.basePath}${environment.allTemplatesUrl}`)
-      .subscribe(response => {
-        this._templates$.next(response.payload);
+    this.httpClient.get<Template[]>(`${environment.basePath}${environment.allTemplatesUrl}`)
+      .subscribe(templates => {
+        this._templates$.next(templates);
       });
   }
 }
