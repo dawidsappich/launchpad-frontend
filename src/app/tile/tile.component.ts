@@ -9,7 +9,7 @@ import {Subscription} from 'rxjs';
   templateUrl: './tile.component.html',
   styleUrls: ['./tile.component.scss']
 })
-export class TileComponent implements OnInit, OnDestroy {
+export class TileComponent {
 
   @Input()
   private tile: Tile;
@@ -19,22 +19,12 @@ export class TileComponent implements OnInit, OnDestroy {
   constructor(private launchpadService: LaunchpadService, private notificationService: NotificationService) {
   }
 
-  ngOnInit() {
-    this.subscription = this.launchpadService.appResponse$
-      .subscribe(response => {
-        this.notificationService.createSnackBar(response.message, 'Dismiss', 2000);
-      });
-  }
-
   onStart() {
     const appId = this.tile.application.id;
     this.launchpadService.startApplication(appId);
     this.isStarted = true;
   }
 
-  ngOnDestroy(): void {
-    this.subscription ? this.subscription.unsubscribe() : this.subscription = null;
-  }
 
   onStop() {
     this.isStarted = false;

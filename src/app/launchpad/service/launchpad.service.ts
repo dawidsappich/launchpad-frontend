@@ -4,6 +4,7 @@ import {environment} from '../../../environments/environment';
 import {Launchpad} from '../../model/launchpad.model';
 import {Subject} from 'rxjs';
 import {ApplicationResponse} from '../../model/application-response.model';
+import {NotificationService} from '../../notification/notification.service';
 
 
 @Injectable({
@@ -12,11 +13,9 @@ import {ApplicationResponse} from '../../model/application-response.model';
 export class LaunchpadService {
   // tslint:disable-next-line:variable-name
   private _launchpad$: Subject<Launchpad> = new Subject<Launchpad>();
-  // tslint:disable-next-line:variable-name
-  private _appResponse$: Subject<ApplicationResponse> = new Subject<ApplicationResponse>();
 
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private notificationService: NotificationService) { }
 
   loadLaunchPad() {
     this.httpClient.get<Launchpad>(`${environment.basePath}${environment.launchpadAllTilesUrl}`)
@@ -31,11 +30,9 @@ export class LaunchpadService {
 
   startApplication(appId: number) {
     this.httpClient.get<ApplicationResponse>(`${environment.basePath}${environment.launchpadStartApplicationUrl}/${appId}`)
-      .subscribe(response => this._appResponse$.next(response));
+      .subscribe(response => {
+        this.notificationService.createSnackBar(response.message, 'Dismiss', 2000);
+      });
   }
 
-
-  get appResponse$(): Subject<ApplicationResponse> {
-    return this._appResponse$;
-  }
 }

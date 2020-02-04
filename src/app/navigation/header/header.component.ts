@@ -3,6 +3,8 @@ import {AuthService} from '../../auth/auth.service';
 import {Observable} from 'rxjs';
 import {NotificationService} from '../../notification/notification.service';
 import {Router} from '@angular/router';
+import {faRocket} from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-header',
@@ -10,6 +12,8 @@ import {Router} from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+
+  private rocketIcon = faRocket;
 
   constructor(private authService: AuthService,
               private notificationService: NotificationService,

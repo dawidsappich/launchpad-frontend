@@ -3,10 +3,9 @@
     <mat-card-title>{{tile.title}}</mat-card-title>
     <mat-card-subtitle>{{tile.description}}</mat-card-subtitle>
   </mat-card-header>
-  <mat-card-actions>
-    <div>
-      <button class="lp-btn-app__start" mat-flat-button color="primary" [disabled]="isStarted" (click)="onStart()">START</button>
-      <button mat-flat-button [disabled]="!isStarted" (click)="onStop()">STOP</button>
-    </div>
+  <mat-card-actions fxLayout="column">
+    <button class="lp-btn-app__start" mat-flat-button color="primary" [disabled]="isStarted" (click)="onStart()">START
+    </button>
+    <button mat-flat-button color="primary" [disabled]="!isStarted" (click)="onStop()">STOP</button>
   </mat-card-actions>
 </mat-card>
