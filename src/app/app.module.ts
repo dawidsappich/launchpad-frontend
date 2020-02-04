@@ -15,13 +15,15 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {LaunchpadComponent} from './launchpad/launchpad.component';
 import {BasicAuthInterceptor} from './shared/auth.interceptor';
 import {AuthGuard} from './auth/auth-guard.service';
+import {TileComponent} from './tile/tile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HeaderComponent,
-    LaunchpadComponent
+    LaunchpadComponent,
+    TileComponent
   ],
   imports: [
     BrowserModule,
