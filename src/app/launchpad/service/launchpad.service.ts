@@ -50,4 +50,11 @@ export class LaunchpadService {
         this._templates$.next(templates);
       });
   }
+
+  addTile(template: Template) {
+    this.httpClient.post(`${environment.basePath}${environment.addTileUrl}`, template)
+      .subscribe(response => {
+        this.loadLaunchPad();
+      });
+  }
 }
