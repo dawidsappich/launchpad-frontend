@@ -1,5 +1,5 @@
 export class ApplicationResponse {
   status: string;
   message: string;
-  payload: string;
+  payload: any;
 }

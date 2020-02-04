@@ -9,7 +9,8 @@ export const environment = {
   basePath: 'http://localhost:8080/api/v1',
   userLoginUrl: commonUrl.userLoginUrl,
   launchpadAllTilesUrl: commonUrl.allTilesUrl,
-  launchpadStartApplicationUrl: commonUrl.startAppUrl
+  launchpadStartApplicationUrl: commonUrl.startAppUrl,
+  allTemplatesUrl: commonUrl.allTemplatesUrl
 };
 
 /*
