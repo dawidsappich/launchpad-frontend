@@ -1,5 +1,6 @@
 <mat-card class="tile-card">
   <mat-card-header>
+    <fa-icon *ngIf="isAdminUser" class="lp-tile-icon__edit" [icon]="faEditIcon" size="lg"></fa-icon>
     <mat-card-title>{{tile.title}}</mat-card-title>
     <mat-card-subtitle>{{tile.description}}</mat-card-subtitle>
   </mat-card-header>

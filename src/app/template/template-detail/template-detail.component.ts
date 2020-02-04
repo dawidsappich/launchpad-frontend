@@ -29,15 +29,19 @@ export class TemplateDetailComponent implements OnInit {
   }
 
   onSubmit() {
+    this.updateTemplateValues();
+
+    this.launchpadService.addTile(this.data);
+
+    this.dialogRef.close();
+  }
+
+  private updateTemplateValues() {
     const name = this.templateDetailForm.get('name').value;
     const desc = this.templateDetailForm.get('name').value;
 
     this.data.templateName = name;
     this.data.templateDescription = desc;
-
-    this.launchpadService.addTile(this.data);
-
-    this.dialogRef.close();
   }
 
   onCancel() {
