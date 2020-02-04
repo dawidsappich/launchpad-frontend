@@ -1,12 +1,6 @@
 <main class="lp-main-view" fxLayout>
-  <section fxLayout="row wrap" fxLayoutGap="50px" fxFlex="80">
+  <section *ngIf="launchpad" fxLayout="row wrap" fxLayoutGap="50px" fxFlex="80">
     <h2 fxFlex="100">{{launchpad.title}}</h2>
-    <div *ngFor="let tile of launchpad.tiles">
-      <app-tile [tile]="tile"></app-tile>
-    </div>
-  </section>
-
-  <section fxFlex="20" fxLayout="column">
-    <h2>Templates</h2>
+    <app-tile *ngFor="let tile of launchpad.tiles" [tile]="tile"></app-tile>
   </section>
 </main>
