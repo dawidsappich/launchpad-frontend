@@ -21,8 +21,8 @@ export class TileDetailComponent implements OnInit {
 
   ngOnInit() {
     this.tileDetailForm = new FormGroup({
-      title: new FormControl(this.data.application.appName),
-      desc: new FormControl(this.data.application.appDescription)
+      title: new FormControl(this.data.title),
+      desc: new FormControl(this.data.description)
     });
   }
 
@@ -36,8 +36,8 @@ export class TileDetailComponent implements OnInit {
     const title = this.tileDetailForm.get('title').value;
     const desc = this.tileDetailForm.get('desc').value;
 
-    this.data.application.appName = title;
-    this.data.application.appDescription = desc;
+    this.data.title = title;
+    this.data.description = desc;
   }
 
   onCancel() {

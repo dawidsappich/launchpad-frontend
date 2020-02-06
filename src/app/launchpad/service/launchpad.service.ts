@@ -60,8 +60,7 @@ export class LaunchpadService {
   }
 
   updateTile(tile: Tile) {
-    const application = tile.application;
-    this.httpClient.patch<ApplicationResponse>(`${environment.basePath}${environment.updateAppUrl}`, application)
+    this.httpClient.patch<ApplicationResponse>(`${environment.basePath}${environment.updateTileUrl}`, tile)
       .subscribe(response => this.loadLaunchPad());
   }
 }

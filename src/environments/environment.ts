@@ -13,7 +13,7 @@ export const environment = {
   allTemplatesUrl: commonUrl.allTemplatesUrl,
   userRoleUrl: commonUrl.userRoleUrl,
   addTileUrl: commonUrl.addTileUrl,
-  updateAppUrl: commonUrl.updateUrl
+  updateTileUrl: commonUrl.updateTileUrl
 };
 
 /*
