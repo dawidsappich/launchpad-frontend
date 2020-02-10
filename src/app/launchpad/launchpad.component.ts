@@ -11,12 +11,12 @@ import {AuthService} from '../auth/auth.service';
   styleUrls: ['./launchpad.component.scss']
 })
 export class LaunchpadComponent implements OnInit, OnDestroy {
-  private launchpad: Launchpad;
-  private launchpadSubscription$: Subscription;
-  private templates: Template[];
-  private templatesSubscription$: Subscription;
-  private isAdmin: boolean;
-  private isAdminSubscription$: Subscription;
+  launchpad: Launchpad;
+  launchpadSubscription$: Subscription;
+  templates: Template[];
+  templatesSubscription$: Subscription;
+  isAdmin: boolean;
+  isAdminSubscription$: Subscription;
 
   constructor(private launchpadService: LaunchpadService, private authService: AuthService) { }
 
@@ -24,7 +24,6 @@ export class LaunchpadComponent implements OnInit, OnDestroy {
     this.isAdminSubscription$ = this.authService.isAdmin$.subscribe(isAdmin => this.isAdmin = isAdmin);
     this.launchpadSubscription$ = this.launchpadService.launchpad$.subscribe(launchpad => this.launchpad = launchpad);
     this.templatesSubscription$ = this.launchpadService.templates$.subscribe(templates => {
-      console.log(templates);
       this.templates = templates;
     });
     this.launchpadService.loadLaunchPad();

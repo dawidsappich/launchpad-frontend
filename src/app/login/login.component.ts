@@ -13,8 +13,8 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   private isAuthenticated$: Subscription;
 
-  private loginForm: FormGroup;
-  private minLength: number;
+  loginForm: FormGroup;
+  minLength: number;
 
   constructor(private authService: AuthService, private router: Router) { }
 

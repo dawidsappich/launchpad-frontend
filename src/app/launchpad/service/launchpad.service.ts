@@ -55,6 +55,7 @@ export class LaunchpadService {
   addTile(template: Template) {
     this.httpClient.post(`${environment.basePath}${environment.addTileUrl}`, template)
       .subscribe(response => {
+        // TODO add error handling
         this.loadLaunchPad();
       });
   }

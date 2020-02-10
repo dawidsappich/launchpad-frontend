@@ -11,7 +11,7 @@ import {LaunchpadService} from '../../launchpad/service/launchpad.service';
   styleUrls: ['./template-detail.component.scss']
 })
 export class TemplateDetailComponent implements OnInit {
-  private templateDetailForm: FormGroup;
+  templateDetailForm: FormGroup;
 
   constructor(
               public dialogRef: MatDialogRef<TemplateDetailComponent>,

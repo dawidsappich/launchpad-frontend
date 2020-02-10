@@ -13,7 +13,7 @@ import {faRocket} from '@fortawesome/free-solid-svg-icons';
 })
 export class HeaderComponent {
 
-  private rocketIcon = faRocket;
+  rocketIcon = faRocket;
 
   constructor(private authService: AuthService,
               private notificationService: NotificationService,

@@ -10,8 +10,7 @@ import {TemplateDetailComponent} from './template-detail/template-detail.compone
 })
 export class TemplateComponent implements OnInit {
 
-  @Input()
-  private template: Template;
+  @Input() template: Template;
 
   constructor(private dialog: MatDialog) {
   }

@@ -9,5 +9,6 @@ export const environment = {
   launchpadStartApplicationUrl: commonUrl.startAppUrl,
   allTemplatesUrl: commonUrl.allTemplatesUrl,
   userRoleUrl: commonUrl.userRoleUrl,
-  addTileUrl: commonUrl.addTileUrl
+  addTileUrl: commonUrl.addTileUrl,
+  updateTileUrl: commonUrl.updateTileUrl
 };

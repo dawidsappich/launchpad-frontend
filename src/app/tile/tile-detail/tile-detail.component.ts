@@ -12,7 +12,7 @@ import {LaunchpadService} from '../../launchpad/service/launchpad.service';
 })
 export class TileDetailComponent implements OnInit {
 
-  private tileDetailForm: FormGroup;
+  tileDetailForm: FormGroup;
 
   constructor(private dialogRef: MatDialogRef<TemplateDetailComponent>,
               @Inject(MAT_DIALOG_DATA) private data: Tile,

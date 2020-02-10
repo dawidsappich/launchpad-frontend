@@ -17,13 +17,12 @@ import {TileDetailComponent} from './tile-detail/tile-detail.component';
 
 export class TileComponent implements OnInit, OnDestroy {
 
-  private faEditIcon = faEdit;
+  faEditIcon = faEdit;
 
-  @Input()
-  private tile: Tile;
-  private isStarted: boolean;
+  @Input() tile: Tile;
+  isStarted: boolean;
   isAdminUser: boolean;
-  private isAdminSubscription$: Subscription;
+  isAdminSubscription$: Subscription;
 
   constructor(private launchpadService: LaunchpadService,
               private notificationService: NotificationService,
