@@ -1,0 +1,12 @@
+version: '3.3'
+
+services:
+  launchpad:
+    hostname: localhost
+    container_name: launchpad-ui
+    build:
+      context: .
+      dockerfile: launchpad-ui.df
+    ports:
+    - 80:80
+    entrypoint: ["nginx", "-g", "daemon off;"]
